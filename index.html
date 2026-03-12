@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Meter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-shield-alt"></i> Password Strength Meter</h1>
+            <p class="subtitle">Vérifiez la robustesse de votre mot de passe en temps réel</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card">
+                <div class="input-section">
+                    <label for="password-input">
+                        <i class="fas fa-key"></i> Saisissez votre mot de passe
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password-input" placeholder="Entrez votre mot de passe ici..." autocomplete="off" autofocus>
+                        <button id="toggle-visibility" class="toggle-btn" aria-label="Afficher/Masquer le mot de passe">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i> Le mot de passe n'est jamais envoyé sur le réseau.
+                    </div>
+                </div>
+
+                <div class="strength-section">
+                    <div class="strength-header">
+                        <h3><i class="fas fa-chart-line"></i> Force du mot de passe</h3>
+                        <div class="score-display">
+                            <span id="score-text">0</span>
+                            <span class="score-label">/100</span>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="strength-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="strength-label" id="strength-label">Très faible</div>
+                </div>
+
+                <div class="criteria-section">
+                    <h3><i class="fas fa-list-check"></i> Critères de sécurité</h3>
+                    <ul class="criteria-list" id="criteria-list">
+                        <li data-criterion="length">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Au moins 12 caractères</span>
+                        </li>
+                        <li data-criterion="uppercase">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Contient une majuscule (A-Z)</span>
+                        </li>
+                        <li data-criterion="lowercase">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Contient une minuscule (a-z)</span>
+                        </li>
+                        <li data-criterion="numbers">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Contient un chiffre (0-9)</span>
+                        </li>
+                        <li data-criterion="special">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Contient un caractère spécial (!@#$%^&*...)</span>
+                        </li>
+                        <li data-criterion="common">
+                            <i class="fas fa-times-circle"></i>
+                            <span>N'est pas un mot de passe courant</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="suggestions-section">
+                    <h3><i class="fas fa-lightbulb"></i> Suggestions d'amélioration</h3>
+                    <div class="suggestions-container">
+                        <ul id="suggestions-list">
+                            <li class="placeholder">Les suggestions apparaîtront ici...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="actions-section">
+                    <button id="generate-password" class="btn-secondary">
+                        <i class="fas fa-dice"></i> Générer un mot de passe fort
+                    </button>
+                    <button id="copy-password" class="btn-secondary" disabled>
+                        <i class="far fa-copy"></i> Copier le mot de passe
+                    </button>
+                    <button id="reset-all" class="btn-secondary">
+                        <i class="fas fa-undo"></i> Réinitialiser
+                    </button>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3><i class="fas fa-graduation-cap"></i> Bonnes pratiques</h3>
+                <ul class="tips-list">
+                    <li><i class="fas fa-check-circle"></i> Utilisez une phrase de passe plutôt qu'un seul mot.</li>
+                    <li><i class="fas fa-check-circle"></i> Évitez les informations personnelles (nom, date de naissance).</li>
+                    <li><i class="fas fa-check-circle"></i> Utilisez un gestionnaire de mots de passe.</li>
+                    <li><i class="fas fa-check-circle"></i> Activez la double authentification (2FA) quand c'est possible.</li>
+                    <li><i class="fas fa-check-circle"></i> Ne réutilisez jamais le même mot de passe sur plusieurs sites.</li>
+                </ul>
+                <div class="disclaimer">
+                    <i class="fas fa-exclamation-triangle"></i> Cet outil s'exécute uniquement dans votre navigateur. Aucune donnée n'est collectée ou transmise.
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Password Strength Meter &copy; <span id="current-year">2024</span> - Outil open source</p>
+            <p class="footer-links">
+                <a href="#" id="privacy-link"><i class="fas fa-user-shield"></i> Confidentialité</a>
+                <a href="#" id="github-link"><i class="fab fa-github"></i> Code source</a>
+                <a href="#" id="feedback-link"><i class="fas fa-comment-dots"></i> Feedback</a>
+            </p>
+        </footer>
+    </div>
+
+    <div id="notification" class="notification" aria-live="polite"></div>
+
+    <script src="js/password-strength.js"></script>
+    <script src="js/suggestions.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/ui-handler.js"></script>
+</body>
+</html>
