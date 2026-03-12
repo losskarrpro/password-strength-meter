@@ -1,0 +1,24 @@
+{
+  "name": "password-strength-meter",
+  "version": "1.0.0",
+  "description": "A modern password strength meter with real-time visual feedback and suggestions",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=7500 --no-browser",
+    "dev": "live-server --port=7500 --no-browser",
+    "test": "node js/tests/password-strength.test.js"
+  },
+  "keywords": [
+    "password",
+    "security",
+    "strength-meter",
+    "validation",
+    "ui"
+  ],
+  "author": "Password Strength Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest-environment-jsdom": "^30.3.0",
+    "live-server": "^1.2.2"
+  }
+}
