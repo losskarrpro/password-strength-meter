@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --danger-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --warning-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-bg: #121826;
+    --card-bg: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.password-input-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 18px 20px;
+    padding-right: 50px;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    transition: all var(--transition-speed) ease;
+    outline: none;
+}
+
+.password-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.toggle-visibility {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color var(--transition-speed);
+}
+
+.toggle-visibility:hover {
+    color: var(--text-primary);
+}
+
+.strength-meter {
+    margin-bottom: 30px;
+}
+
+.strength-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.strength-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.progress-container {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 6px;
+    transition: width 0.5s ease, background 0.5s ease;
+}
+
+.progress-bar.weak {
+    background: var(--danger-gradient);
+}
+.progress-bar.fair {
+    background: var(--warning-gradient);
+}
+.progress-bar.good {
+    background: linear-gradient(135deg, #f6d365 0%, #4facfe 50%, #00f2fe 100%);
+}
+.progress-bar.strong {
+    background: var(--success-gradient);
+}
+
+.strength-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: right;
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.criteria-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.criteria-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border-left: 4px solid transparent;
+    transition: all var(--transition-speed);
+}
+
+.criteria-item.valid {
+    border-left-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.criteria-icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.criteria-item.valid .criteria-icon {
+    color: #00f2fe;
+}
+
+.criteria-text {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.suggestions-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid #f5576c;
+    margin-bottom: 25px;
+}
+
+.suggestions-title {
+    color: #f5576c;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding-left: 5px;
+}
+
+.suggestion-item {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.suggestion-item::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #f5576c;
+}
+
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .password-input {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
